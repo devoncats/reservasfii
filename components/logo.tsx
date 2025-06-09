@@ -9,7 +9,10 @@ export function Logo({ size = "large" }: { size?: "small" | "large" }) {
   };
 
   return (
-    <Link href="https://reservasfii.utp.ac.pa" className="flex gap-1">
+    <Link
+      href="https://reservasfii.utp.ac.pa"
+      className="flex items-center gap-1"
+    >
       <Image
         className="flex flex-col"
         src={"/logos/logo-fii.svg"}
@@ -18,7 +21,7 @@ export function Logo({ size = "large" }: { size?: "small" | "large" }) {
         height={sizes[size].height}
         priority
       />
-      <div>
+      <div className="flex flex-col">
         <h1
           className={cn(
             "flex flex-col justify-center font-sans font-semibold",
