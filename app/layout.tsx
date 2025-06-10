@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { SessionProvider } from "next-auth/react";
 import { Inter, Roboto_Mono } from "next/font/google";
+import { Toaster } from "sonner";
 import "./globals.css";
 
 const inter = Inter({
@@ -26,7 +28,8 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={`${inter.variable} ${robotoMono.variable} antialiased`}>
-        {children}
+        <SessionProvider>{children}</SessionProvider>
+        <Toaster />
       </body>
     </html>
   );

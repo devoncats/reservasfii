@@ -44,7 +44,7 @@
 }
 
 :root {
-  --radius: 0.625rem;
+  --radius: 0.25rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -118,5 +118,23 @@
   }
   body {
     @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+@layer components {
+  .heading-1 {
+    @apply text-2xl font-semibold tracking-tight;
+  }
+  .heading-2 {
+    @apply text-xl font-semibold tracking-tight;
+  }
+  .body-1 {
+    @apply text-foreground text-base font-normal;
+  }
+  .body-2 {
+    @apply text-muted-foreground text-sm font-normal;
+  }
+  .caption {
+    @apply text-muted-foreground text-xs font-normal;
   }
 }

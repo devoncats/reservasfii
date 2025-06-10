@@ -1,4 +1,10 @@
-import { Check, Eye, Plus } from "lucide-react";
+import {
+  Calendar,
+  CalendarCheck2,
+  CalendarHeart,
+  CalendarPlus,
+  Eye,
+} from "lucide-react";
 
 export const SIDEBAR_DATA = {
   user: {
@@ -9,54 +15,54 @@ export const SIDEBAR_DATA = {
   reservations: [
     {
       name: "Todas las reservas",
-      url: "/dashboard/my-reservations",
-      icon: Eye,
+      url: "/dashboard/",
+      icon: Calendar,
     },
     {
       name: "Mis reservas",
-      url: "/dashboard/my-reservations",
-      icon: Eye,
+      url: "/dashboard/my-1",
+      icon: CalendarHeart,
     },
     {
       name: "Crear reserva",
       url: "/dashboard/",
-      icon: Plus,
+      icon: CalendarPlus,
     },
     {
       name: "Aprobar reservas",
       url: "/dashboard/approvals",
-      icon: Check,
+      icon: CalendarCheck2,
     },
   ],
   administrator: [
     {
       name: "Laboratorios",
-      url: "/dashboard/my-reservations",
+      url: "/dashboard/my-2",
       icon: Eye,
     },
     {
       name: "Facultades",
-      url: "/dashboard/my-reservations",
+      url: "/dashboard/my-3",
       icon: Eye,
     },
     {
       name: "Carreras",
-      url: "/dashboard/my-reservations",
+      url: "/dashboard/my-4",
       icon: Eye,
     },
     {
       name: "Materias",
-      url: "/dashboard/my-reservations",
+      url: "/dashboard/my-5",
       icon: Eye,
     },
     {
       name: "Carreras",
-      url: "/dashboard/my-reservations",
+      url: "/dashboard/my-6",
       icon: Eye,
     },
     {
       name: "Facultades",
-      url: "/dashboard/my-reservations",
+      url: "/dashboard/my-7",
       icon: Eye,
     },
   ],
