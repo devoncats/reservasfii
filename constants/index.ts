@@ -20,17 +20,17 @@ export const SIDEBAR_DATA = {
     },
     {
       name: "Mis reservas",
-      url: "/dashboard/my-1",
+      url: "/dashboard/reservations/",
       icon: CalendarHeart,
     },
     {
       name: "Crear reserva",
-      url: "/dashboard/",
+      url: "/dashboard/reservations/create",
       icon: CalendarPlus,
     },
     {
       name: "Aprobar reservas",
-      url: "/dashboard/approvals",
+      url: "/dashboard/reservations/approve",
       icon: CalendarCheck2,
     },
   ],

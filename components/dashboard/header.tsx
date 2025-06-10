@@ -1,5 +1,5 @@
+import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import { Separator } from "@radix-ui/react-separator";
 
 export function DashboardHeader() {
   return (
