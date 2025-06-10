@@ -6,7 +6,7 @@ interface UserAvatarProps {
   image?: string;
 }
 
-export default function UserAvatar({ name, email, image }: UserAvatarProps) {
+export function UserAvatar({ name, email, image }: UserAvatarProps) {
   return (
     <>
       <Avatar className="h-8 w-8 rounded-lg">

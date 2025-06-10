@@ -17,7 +17,7 @@ export function DashboardSidebarReservations() {
           <SidebarMenuItem key={item.url}>
             <SidebarMenuButton asChild>
               <Link href={item.url} className="flex items-center gap-2">
-                <item.icon />
+                <item.icon className="text-muted-foreground" />
                 <span>{item.name}</span>
               </Link>
             </SidebarMenuButton>

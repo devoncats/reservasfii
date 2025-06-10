@@ -1,5 +1,5 @@
-import UserAvatar from "@/components/dashboard/sidebar/user-avatar";
-import SignoutForm from "@/components/signout/signout-form";
+import { UserAvatar } from "@/components/dashboard/sidebar/user-avatar";
+import { SignoutForm } from "@/components/signout/signout-form";
 import {
   DropdownMenu,
   DropdownMenuContent,

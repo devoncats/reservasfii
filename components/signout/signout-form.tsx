@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
 
-export default function SignoutForm() {
+export function SignoutForm() {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
