@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export function LoginTOS() {
   return (
-    <p className="caption max-w-xs text-center">
+    <p className="caption-1 max-w-xs text-center">
       <span>Al ingresar, aceptas nuestros </span>
       <Link className="hover:text-foreground underline" href="/">
         términos y condiciones

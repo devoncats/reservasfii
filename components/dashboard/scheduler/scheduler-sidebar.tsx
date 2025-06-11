@@ -6,7 +6,7 @@ import { endOfWeek, startOfWeek } from "date-fns";
 import { es } from "date-fns/locale";
 import { rangeIncludesDate } from "react-day-picker";
 
-export function CalendarSidebar() {
+export function SchedulerSidebar() {
   const { selectedWeek, setSelectedWeek } = useCalendar();
 
   const handleOnDayClick = (day: Date) => {
@@ -17,7 +17,7 @@ export function CalendarSidebar() {
   };
 
   return (
-    <nav className="flex h-full w-fit justify-center border-r p-2">
+    <nav className="flex w-fit justify-center border-r p-4">
       <Calendar
         locale={es}
         weekStartsOn={0}
@@ -28,6 +28,7 @@ export function CalendarSidebar() {
           range_middle: (date: Date) =>
             rangeIncludesDate(selectedWeek, date, true),
         }}
+        className="p-0"
         onDayClick={handleOnDayClick}
       />
     </nav>

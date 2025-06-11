@@ -1,5 +1,6 @@
-import { CalendarSidebar } from "@/components/dashboard/calendar/calendar-sidebar";
-import { DashboardHeader } from "@/components/dashboard/header";
+import { DashboardHeader } from "@/components/dashboard/dashboard-header";
+import Scheduler from "@/components/dashboard/scheduler/scheduler";
+import { SchedulerSidebar } from "@/components/dashboard/scheduler/scheduler-sidebar";
 import { DashboardSidebar } from "@/components/dashboard/sidebar/dashboard-sidebar";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { auth } from "@/lib/auth";
@@ -16,12 +17,13 @@ export default async function DashboardPage() {
   return (
     <SidebarProvider>
       <DashboardSidebar />
-      <SidebarInset>
+      <SidebarInset className="flex h-screen flex-col">
         <DashboardHeader />
         <CalendarProvider>
-          <section className="h-full">
-            <CalendarSidebar />
-          </section>
+          <div className="flex min-h-0 flex-1">
+            <SchedulerSidebar />
+            <Scheduler />
+          </div>
         </CalendarProvider>
       </SidebarInset>
     </SidebarProvider>

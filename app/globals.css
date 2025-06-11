@@ -134,7 +134,14 @@
   .body-2 {
     @apply text-muted-foreground text-sm font-normal;
   }
-  .caption {
+  .caption-1 {
     @apply text-muted-foreground text-xs font-normal;
   }
+  .caption-2 {
+    @apply text-right font-mono text-[9px];
+  }
+}
+
+@utility scheduler {
+  @apply grid h-full grid-cols-[3fr_repeat(7,_7fr)];
 }

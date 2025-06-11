@@ -1,3 +1,4 @@
+import { UserRole } from "@prisma/client";
 import {
   Calendar,
   CalendarCheck2,
@@ -7,11 +8,6 @@ import {
 } from "lucide-react";
 
 export const SIDEBAR_DATA = {
-  user: {
-    name: "Gregorio Samsa",
-    email: "gregorio.samsa@utp.ac.pa",
-    avatar: "/avatars/placeholder.png",
-  },
   reservations: [
     {
       name: "Todas las reservas",
@@ -67,3 +63,83 @@ export const SIDEBAR_DATA = {
     },
   ],
 } as const;
+
+export const HOURS: string[] = [
+  "01:00",
+  "02:00",
+  "03:00",
+  "04:00",
+  "05:00",
+  "06:00",
+  "07:00",
+  "08:00",
+  "09:00",
+  "10:00",
+  "11:00",
+  "12:00",
+  "13:00",
+  "14:00",
+  "15:00",
+  "16:00",
+  "17:00",
+  "18:00",
+  "19:00",
+  "20:00",
+  "21:00",
+  "22:00",
+  "23:00",
+  "",
+] as const;
+
+export const LABORATORIES = [
+  {
+    id: "1",
+    name: "Laboratorio de Aplicaciones Industriales I",
+    visibility: [
+      UserRole.ADMINISTRATOR,
+      UserRole.ADMINISTRATIVE,
+      UserRole.PROFESSOR,
+    ],
+  },
+  {
+    id: "2",
+    name: "Laboratorio de Aplicaciones Industriales II",
+    visibility: [
+      UserRole.ADMINISTRATOR,
+      UserRole.ADMINISTRATIVE,
+      UserRole.PROFESSOR,
+    ],
+  },
+  {
+    id: "3",
+    name: "Laboratorio de Aplicaciones Industriales III",
+    visibility: [
+      UserRole.ADMINISTRATOR,
+      UserRole.ADMINISTRATIVE,
+      UserRole.PROFESSOR,
+    ],
+  },
+  {
+    id: "4",
+    name: "Laboratorio de Estudios Industriales",
+    visibility: [
+      UserRole.ADMINISTRATOR,
+      UserRole.ADMINISTRATIVE,
+      UserRole.PROFESSOR,
+    ],
+  },
+  {
+    id: "5",
+    name: "Laboratorio de Estudios Industriales y Logística",
+    visibility: [
+      UserRole.ADMINISTRATOR,
+      UserRole.ADMINISTRATIVE,
+      UserRole.PROFESSOR,
+    ],
+  },
+  {
+    id: "6",
+    name: "Salón de Conferencias Ing. Rodolfo Cardoze",
+    visibility: [UserRole.ADMINISTRATOR, UserRole.ADMINISTRATIVE],
+  },
+];
