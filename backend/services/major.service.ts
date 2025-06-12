@@ -29,7 +29,7 @@ export class MajorService {
     return await this.majorRepository.delete(id);
   }
 
-  async MajorExists(id: string) {
+  async majorExists(id: string) {
     return await this.majorRepository.exists(id);
   }
 }

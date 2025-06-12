@@ -29,7 +29,7 @@ export class FacultyService {
     return await this.facultyRepository.delete(id);
   }
 
-  async FacultyExists(id: string) {
+  async facultyExists(id: string) {
     return await this.facultyRepository.exists(id);
   }
 }
