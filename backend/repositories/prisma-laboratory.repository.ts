@@ -1,5 +1,7 @@
 import {
   CreateLaboratoryDto,
+  LaboratoryDetailsDto,
+  LaboratoryDto,
   UpdateLaboratoryDto,
 } from "@/backend/dto/laboratory.dto";
 import { LaboratoryRepository } from "@/backend/repositories/interface/laboratory.repository";
@@ -7,9 +9,7 @@ import { prisma } from "@/lib/prisma";
 import { Laboratory, UserRole } from "@prisma/client";
 
 export class PrismaLaboratoryRepository implements LaboratoryRepository {
-  async findAccessibleByRole(
-    role: UserRole
-  ): Promise<Pick<Laboratory, "id" | "name">[]> {
+  async findAccessibleByRole(role: UserRole): Promise<LaboratoryDto[]> {
     return await prisma.laboratory.findMany({
       where: {
         visibility: {
@@ -32,9 +32,7 @@ export class PrismaLaboratoryRepository implements LaboratoryRepository {
     });
   }
 
-  async findAll(): Promise<
-    Pick<Laboratory, "id" | "name" | "description" | "visibility">[]
-  > {
+  async findAll(): Promise<LaboratoryDetailsDto[]> {
     return await prisma.laboratory.findMany({
       select: {
         id: true,
