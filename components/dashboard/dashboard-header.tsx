@@ -12,6 +12,7 @@ import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { getRouteLabels } from "@/lib/utils";
 import { usePathname } from "next/navigation";
+import { Fragment } from "react";
 
 export function DashboardHeader() {
   const pathname = usePathname();
@@ -28,8 +29,8 @@ export function DashboardHeader() {
       <Breadcrumb>
         <BreadcrumbList>
           {routes.map((route) => (
-            <>
-              <BreadcrumbItem key={route.href}>
+            <Fragment key={route.label}>
+              <BreadcrumbItem>
                 {route.isLast ? (
                   <BreadcrumbPage>{route.label}</BreadcrumbPage>
                 ) : (
@@ -39,7 +40,7 @@ export function DashboardHeader() {
                 )}
               </BreadcrumbItem>
               {!route.isLast && <BreadcrumbSeparator />}
-            </>
+            </Fragment>
           ))}
         </BreadcrumbList>
       </Breadcrumb>

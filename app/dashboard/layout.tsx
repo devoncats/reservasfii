@@ -1,7 +1,7 @@
 import { DashboardHeader } from "@/components/dashboard/dashboard-header";
 import { DashboardSidebar } from "@/components/dashboard/sidebar/dashboard-sidebar";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-import { CalendarProvider } from "@/providers/calendar-provider";
+import { SchedulerProvider } from "@/providers/scheduler-provider";
 
 export default function DashboardLayout({
   children,
@@ -9,7 +9,7 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <CalendarProvider>
+    <SchedulerProvider>
       <SidebarProvider>
         <DashboardSidebar />
         <SidebarInset className="flex h-screen flex-col">
@@ -17,6 +17,6 @@ export default function DashboardLayout({
           {children}
         </SidebarInset>
       </SidebarProvider>
-    </CalendarProvider>
+    </SchedulerProvider>
   );
 }

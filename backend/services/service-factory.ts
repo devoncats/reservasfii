@@ -1,10 +1,12 @@
 import { PrismaLaboratoryRepository } from "@/backend/repositories/prisma-laboratory.repository";
+import { FacultyService } from "@/backend/services/faculty.service";
 import { LaboratoryService } from "@/backend/services/laboratory.service";
 import { ResponsibleService } from "@/backend/services/responsible.service";
 
 export class ServiceFactory {
   private static laboratoryService: LaboratoryService;
   private static responsibleService: ResponsibleService;
+  private static facultyService: FacultyService;
 
   static getLaboratoryService(): LaboratoryService {
     if (!this.laboratoryService) {
@@ -21,5 +23,13 @@ export class ServiceFactory {
     }
 
     return this.responsibleService;
+  }
+
+  static getFacultyService(): FacultyService {
+    if (!this.facultyService) {
+      this.facultyService = new FacultyService();
+    }
+
+    return this.facultyService;
   }
 }

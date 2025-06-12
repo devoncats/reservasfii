@@ -4,11 +4,11 @@ import { SchedulerDayColumn } from "@/components/dashboard/scheduler/scheduler-d
 import { SchedulerHourColumn } from "@/components/dashboard/scheduler/scheduler-hour-column";
 import { SchedulerLaboratorySelect } from "@/components/dashboard/scheduler/sheduler-laboratory-select";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { useCalendar } from "@/hooks/use-calendar";
+import { useScheduler } from "@/hooks/use-scheduler";
 import { getDaysInWeek, toFormattedMonth } from "@/lib/scheduler";
 
 export default function Scheduler() {
-  const { selectedWeek } = useCalendar();
+  const { selectedWeek } = useScheduler();
 
   const days = getDaysInWeek(selectedWeek.from, selectedWeek.to);
 

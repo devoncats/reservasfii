@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export function Logo({ size = "large" }: { size?: "small" | "large" }) {
   const sizes = {
-    small: { width: 32, height: 32, fontSize: "text-sm" },
+    small: { width: 32, height: 40, fontSize: "text-sm" },
     large: { width: 68, height: 85, fontSize: "text-lg" },
   };
 

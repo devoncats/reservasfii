@@ -5,11 +5,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useCalendar } from "@/hooks/use-calendar";
+import { useScheduler } from "@/hooks/use-scheduler";
 
 export function SchedulerLaboratorySelect() {
   const { laboratories, selectedLaboratoryId, setSelectedLaboratoryId } =
-    useCalendar();
+    useScheduler();
 
   return (
     <Select

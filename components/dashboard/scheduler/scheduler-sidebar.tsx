@@ -1,13 +1,13 @@
 "use client";
 
 import { Calendar } from "@/components/ui/calendar";
-import { useCalendar } from "@/hooks/use-calendar";
+import { useScheduler } from "@/hooks/use-scheduler";
 import { endOfWeek, startOfWeek } from "date-fns";
 import { es } from "date-fns/locale";
 import { rangeIncludesDate } from "react-day-picker";
 
 export function SchedulerSidebar() {
-  const { selectedWeek, setSelectedWeek } = useCalendar();
+  const { selectedWeek, setSelectedWeek } = useScheduler();
 
   const handleOnDayClick = (day: Date) => {
     setSelectedWeek({

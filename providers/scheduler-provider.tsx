@@ -1,21 +1,21 @@
 "use client";
 
 import { getAccessibleLaboratoriesAction } from "@/actions/laboratory.actions";
-import { CalendarContextData, RequiredDateRange } from "@/types";
+import { RequiredDateRange, SchedulerContextData } from "@/types";
 import { endOfWeek, startOfWeek } from "date-fns";
 import { createContext, useCallback, useEffect, useState } from "react";
 
-export const CalendarContext = createContext<CalendarContextData | undefined>(
+export const SchedulerContext = createContext<SchedulerContextData | undefined>(
   undefined
 );
 
-export function CalendarProvider({ children }: { children: React.ReactNode }) {
+export function SchedulerProvider({ children }: { children: React.ReactNode }) {
   // Fetching states
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   const [laboratories, setLaboratories] = useState<
-    CalendarContextData["laboratories"]
+    SchedulerContextData["laboratories"]
   >([]);
 
   // UI states
@@ -56,7 +56,7 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
   }, [refreshData]);
 
   // Context value
-  const value: CalendarContextData = {
+  const value: SchedulerContextData = {
     isLoading,
     error,
     laboratories,
@@ -71,8 +71,8 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <CalendarContext.Provider value={value}>
+    <SchedulerContext.Provider value={value}>
       {children}
-    </CalendarContext.Provider>
+    </SchedulerContext.Provider>
   );
 }

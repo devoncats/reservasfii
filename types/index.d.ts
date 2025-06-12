@@ -11,7 +11,7 @@ declare interface RequiredDateRange {
   to: Date;
 }
 
-declare interface CalendarContextData {
+declare interface SchedulerContextData {
   // Fetching states
   isLoading: boolean;
   error: string | null;
