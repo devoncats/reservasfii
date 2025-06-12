@@ -1,6 +1,7 @@
 "use client";
 
-import { LABORATORIES } from "@/constants";
+import { getAccessibleLaboratoriesAction } from "@/actions/laboratory.actions";
+import { CalendarContextData, RequiredDateRange } from "@/types";
 import { endOfWeek, startOfWeek } from "date-fns";
 import { createContext, useCallback, useEffect, useState } from "react";
 
@@ -10,7 +11,12 @@ export const CalendarContext = createContext<CalendarContextData | undefined>(
 
 export function CalendarProvider({ children }: { children: React.ReactNode }) {
   // Fetching states
-  const [laboratories, setLaboratories] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const [laboratories, setLaboratories] = useState<
+    CalendarContextData["laboratories"]
+  >([]);
 
   // UI states
   const [selectedWeek, setSelectedWeek] = useState<RequiredDateRange>({
@@ -20,13 +26,27 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
   const [selectedLaboratoryId, setSelectedLaboratoryId] = useState<string>("");
 
   // Functions
-  const refreshData = useCallback(() => {
-    const laboratoriesData = LABORATORIES;
+  const refreshData = useCallback(async () => {
+    const [laboratoriesResponse] = await Promise.all([
+      getAccessibleLaboratoriesAction(),
+    ]);
 
-    setLaboratories(laboratoriesData);
+    if (!laboratoriesResponse.success) {
+      setError(laboratoriesResponse.error);
+      setIsLoading(false);
+      return;
+    }
 
-    if (!selectedLaboratoryId && laboratoriesData.length > 0) {
-      setSelectedLaboratoryId(laboratoriesData[0].id);
+    if (!laboratoriesResponse || !laboratoriesResponse.data) {
+      setError("No laboratories found");
+      setIsLoading(false);
+      return;
+    }
+
+    setLaboratories(laboratoriesResponse!.data);
+
+    if (!selectedLaboratoryId && laboratoriesResponse.data.length > 0) {
+      setSelectedLaboratoryId(laboratoriesResponse.data[0].id);
     }
   }, [selectedLaboratoryId]);
 
@@ -37,10 +57,14 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
 
   // Context value
   const value: CalendarContextData = {
+    isLoading,
+    error,
     laboratories,
     selectedWeek,
     selectedLaboratoryId,
 
+    setIsLoading,
+    setError,
     setLaboratories,
     setSelectedWeek,
     setSelectedLaboratoryId,

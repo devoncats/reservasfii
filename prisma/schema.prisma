@@ -15,14 +15,15 @@ enum UserRole {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String        @id @default(cuid())
   name          String?
-  email         String    @unique
+  email         String        @unique
   emailVerified DateTime?
   image         String?
-  role          UserRole  @default(PROFESSOR)
+  role          UserRole      @default(PROFESSOR)
   accounts      Account[]
   sessions      Session[]
+  reservation   Reservation[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -65,4 +66,98 @@ model VerificationToken {
   expires    DateTime
 
   @@id([identifier, token])
+}
+
+model Laboratory {
+  id          String        @id @default(cuid())
+  name        String
+  description String?
+  visibility  UserRole[]    @default([ADMINISTRATOR, ADMINISTRATIVE])
+  reservation Reservation[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Responsible {
+  id          String        @id @default(cuid())
+  name        String
+  email       String?       @unique
+  phone       String?
+  reservation Reservation[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Faculty {
+  id          String        @id @default(cuid())
+  name        String
+  description String?
+  reservation Reservation[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum MajorCategory {
+  UNDERGRADUATE
+  POSTGRADUATE
+  MASTER
+  DOCTORATE
+}
+
+model Major {
+  id          String        @id @default(cuid())
+  name        String
+  category    MajorCategory @default(UNDERGRADUATE)
+  description String?
+  reservation Reservation[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Course {
+  id          String        @id @default(cuid())
+  name        String
+  description String?
+  reservation Reservation[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum ReservationStatus {
+  PENDING
+  CONFIRMED
+  REJECTED
+  COMPLETED
+  CANCELLED
+}
+
+model Reservation {
+  id      String            @id @default(cuid())
+  group   String
+  status  ReservationStatus @default(PENDING)
+  start   DateTime
+  end     DateTime
+  comment String?
+
+  laboratoryId  String
+  responsibleId String
+  facultyId     String
+  majorId       String
+  courseId      String
+  userId        String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  laboratory  Laboratory  @relation(fields: [laboratoryId], references: [id], onDelete: Cascade)
+  responsible Responsible @relation(fields: [responsibleId], references: [id], onDelete: Cascade)
+  faculty     Faculty     @relation(fields: [facultyId], references: [id], onDelete: Cascade)
+  major       Major       @relation(fields: [majorId], references: [id], onDelete: Cascade)
+  course      Course      @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

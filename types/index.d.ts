@@ -1,3 +1,5 @@
+import { Laboratory } from "@prisma/client";
+
 declare interface RequiredDateRange {
   from: Date;
   to: Date;
@@ -5,10 +7,14 @@ declare interface RequiredDateRange {
 
 declare interface CalendarContextData {
   // Fetching states
-  laboratories: any[];
+  isLoading: boolean;
+  error: string | null;
+  laboratories: Pick<Laboratory, "id", "name">[];
 
   // Fetching Actions
-  setLaboratories: (laboratory: any[]) => void;
+  setIsLoading: (isLoading: boolean) => void;
+  setError: (error: string | null) => void;
+  setLaboratories: (laboratories: Pick<Laboratory, "id", "name">[]) => void;
 
   // UI states
   selectedWeek: RequiredDateRange;
