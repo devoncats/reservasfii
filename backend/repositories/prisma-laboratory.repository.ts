@@ -32,11 +32,15 @@ export class PrismaLaboratoryRepository implements LaboratoryRepository {
     });
   }
 
-  async findAll(): Promise<Pick<Laboratory, "id" | "name">[]> {
+  async findAll(): Promise<
+    Pick<Laboratory, "id" | "name" | "description" | "visibility">[]
+  > {
     return await prisma.laboratory.findMany({
       select: {
         id: true,
         name: true,
+        description: true,
+        visibility: true,
       },
       orderBy: {
         name: "asc",

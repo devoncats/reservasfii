@@ -9,7 +9,9 @@ export interface LaboratoryRepository {
     role: UserRole
   ): Promise<Pick<Laboratory, "id" | "name">[]>;
   findById(id: string): Promise<Laboratory | null>;
-  findAll(): Promise<Pick<Laboratory, "id" | "name">[]>;
+  findAll(): Promise<
+    Pick<Laboratory, "id" | "name" | "description" | "visibility">[]
+  >;
   create(data: CreateLaboratoryDto): Promise<Laboratory>;
   update(id: string, data: UpdateLaboratoryDto): Promise<Laboratory>;
   delete(id: string): Promise<void>;

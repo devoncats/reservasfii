@@ -1,4 +1,3 @@
-import { UserRole } from "@prisma/client";
 import {
   Calendar,
   CalendarCheck2,
@@ -33,7 +32,7 @@ export const SIDEBAR_DATA = {
   administrator: [
     {
       name: "Laboratorios",
-      url: "/dashboard/my-2",
+      url: "/dashboard/laboratories",
       icon: Eye,
     },
     {
@@ -91,55 +90,12 @@ export const HOURS: string[] = [
   "",
 ] as const;
 
-export const LABORATORIES = [
-  {
-    id: "1",
-    name: "Laboratorio de Aplicaciones Industriales I",
-    visibility: [
-      UserRole.ADMINISTRATOR,
-      UserRole.ADMINISTRATIVE,
-      UserRole.PROFESSOR,
-    ],
-  },
-  {
-    id: "2",
-    name: "Laboratorio de Aplicaciones Industriales II",
-    visibility: [
-      UserRole.ADMINISTRATOR,
-      UserRole.ADMINISTRATIVE,
-      UserRole.PROFESSOR,
-    ],
-  },
-  {
-    id: "3",
-    name: "Laboratorio de Aplicaciones Industriales III",
-    visibility: [
-      UserRole.ADMINISTRATOR,
-      UserRole.ADMINISTRATIVE,
-      UserRole.PROFESSOR,
-    ],
-  },
-  {
-    id: "4",
-    name: "Laboratorio de Estudios Industriales",
-    visibility: [
-      UserRole.ADMINISTRATOR,
-      UserRole.ADMINISTRATIVE,
-      UserRole.PROFESSOR,
-    ],
-  },
-  {
-    id: "5",
-    name: "Laboratorio de Estudios Industriales y Logística",
-    visibility: [
-      UserRole.ADMINISTRATOR,
-      UserRole.ADMINISTRATIVE,
-      UserRole.PROFESSOR,
-    ],
-  },
-  {
-    id: "6",
-    name: "Salón de Conferencias Ing. Rodolfo Cardoze",
-    visibility: [UserRole.ADMINISTRATOR, UserRole.ADMINISTRATIVE],
-  },
-];
+export const LABELS: Record<string, string> = {
+  dashboard: "Dashboard",
+  create: "Crear reserva",
+  approve: "Aprobar reservas",
+  laboratories: "Laboratorios",
+  faculties: "Facultades",
+  majors: "Carreras",
+  courses: "Materias",
+};

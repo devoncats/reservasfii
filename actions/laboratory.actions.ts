@@ -36,3 +36,26 @@ export async function getAccessibleLaboratoriesAction() {
     };
   }
 }
+
+export async function getAllLaboratoriesAction() {
+  try {
+    const laboratoryService = ServiceFactory.getLaboratoryService();
+    const laboratories = await laboratoryService.getAllLaboratories();
+
+    return {
+      success: true,
+      data: laboratories,
+      error: null,
+    };
+  } catch (error) {
+    if (process.env.NODE_ENV === "development") {
+      console.error("[LABORATORY_ACTION_GET]: ", error);
+    }
+
+    return {
+      success: false,
+      data: null,
+      error: "Failed to fetch all laboratories",
+    };
+  }
+}

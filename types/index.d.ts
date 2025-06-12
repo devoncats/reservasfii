@@ -1,5 +1,11 @@
 import { Laboratory } from "@prisma/client";
 
+declare interface BreadcrumbRoute {
+  href: string;
+  label: string;
+  isLast: boolean;
+}
+
 declare interface RequiredDateRange {
   from: Date;
   to: Date;

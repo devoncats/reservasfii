@@ -43,7 +43,7 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
       return;
     }
 
-    setLaboratories(laboratoriesResponse!.data);
+    setLaboratories(laboratoriesResponse.data || []);
 
     if (!selectedLaboratoryId && laboratoriesResponse.data.length > 0) {
       setSelectedLaboratoryId(laboratoriesResponse.data[0].id);
