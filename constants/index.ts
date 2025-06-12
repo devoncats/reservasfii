@@ -1,9 +1,13 @@
 import {
+  Book,
   Calendar,
   CalendarCheck2,
   CalendarHeart,
   CalendarPlus,
-  Eye,
+  FlaskConical,
+  GraduationCap,
+  University,
+  User,
 } from "lucide-react";
 
 export const SIDEBAR_DATA = {
@@ -23,42 +27,37 @@ export const SIDEBAR_DATA = {
       url: "/dashboard/reservations/create",
       icon: CalendarPlus,
     },
+  ],
+  administrator: [
     {
       name: "Aprobar reservas",
       url: "/dashboard/reservations/approve",
       icon: CalendarCheck2,
     },
-  ],
-  administrator: [
     {
       name: "Laboratorios",
       url: "/dashboard/laboratories",
-      icon: Eye,
+      icon: FlaskConical,
+    },
+    {
+      name: "Responsables",
+      url: "/dashboard/responsibles",
+      icon: User,
     },
     {
       name: "Facultades",
-      url: "/dashboard/my-3",
-      icon: Eye,
+      url: "/dashboard/faculties",
+      icon: University,
     },
     {
       name: "Carreras",
-      url: "/dashboard/my-4",
-      icon: Eye,
+      url: "/dashboard/majors",
+      icon: GraduationCap,
     },
     {
       name: "Materias",
-      url: "/dashboard/my-5",
-      icon: Eye,
-    },
-    {
-      name: "Carreras",
-      url: "/dashboard/my-6",
-      icon: Eye,
-    },
-    {
-      name: "Facultades",
-      url: "/dashboard/my-7",
-      icon: Eye,
+      url: "/dashboard/courses",
+      icon: Book,
     },
   ],
 } as const;
@@ -92,6 +91,7 @@ export const HOURS: string[] = [
 
 export const LABELS: Record<string, string> = {
   dashboard: "Dashboard",
+  reservations: "Mis reservas",
   create: "Crear reserva",
   approve: "Aprobar reservas",
   laboratories: "Laboratorios",
