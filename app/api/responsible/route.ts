@@ -30,9 +30,9 @@ export async function POST(request: NextRequest) {
     const body: CreateResponsibleDto = await request.json();
 
     const responsibleService = ServiceFactory.getResponsibleService();
-    const responsibles = await responsibleService.createResponsible(body);
+    const responsible = await responsibleService.createResponsible(body);
 
-    return ApiResponse.success({ responsibles }, 201);
+    return ApiResponse.success({ responsible }, 201);
   } catch (error) {
     if (process.env.NODE_ENV === "development") {
       console.error("[RESPONSIBLE_POST]: ", error);

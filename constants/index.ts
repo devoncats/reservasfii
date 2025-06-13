@@ -4,6 +4,7 @@ import {
   CalendarCheck2,
   CalendarHeart,
   CalendarPlus,
+  CalendarSearch,
   FlaskConical,
   GraduationCap,
   University,
@@ -29,6 +30,11 @@ export const SIDEBAR_DATA = {
     },
   ],
   administrator: [
+    {
+      name: "Todas las reservas",
+      url: "/dashboard/reservations/all",
+      icon: CalendarSearch,
+    },
     {
       name: "Aprobar reservas",
       url: "/dashboard/reservations/approve",
@@ -92,6 +98,7 @@ export const HOURS: string[] = [
 export const LABELS: Record<string, string> = {
   dashboard: "Dashboard",
   reservations: "Mis reservas",
+  all: "Todas las reservas",
   create: "Crear reserva",
   approve: "Aprobar reservas",
   laboratories: "Laboratorios",
