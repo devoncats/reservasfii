@@ -3,6 +3,7 @@ import { CourseService } from "@/backend/services/course.service";
 import { FacultyService } from "@/backend/services/faculty.service";
 import { LaboratoryService } from "@/backend/services/laboratory.service";
 import { MajorService } from "@/backend/services/major.service";
+import { ReservationService } from "@/backend/services/reservation.service";
 import { ResponsibleService } from "@/backend/services/responsible.service";
 
 export class ServiceFactory {
@@ -11,6 +12,7 @@ export class ServiceFactory {
   private static facultyService: FacultyService;
   private static majorService: MajorService;
   private static courseService: CourseService;
+  private static reservationService: ReservationService;
 
   static getLaboratoryService(): LaboratoryService {
     if (!this.laboratoryService) {
@@ -51,5 +53,13 @@ export class ServiceFactory {
     }
 
     return this.courseService;
+  }
+
+  static getReservationService(): ReservationService {
+    if (!this.reservationService) {
+      this.reservationService = new ReservationService();
+    }
+
+    return this.reservationService;
   }
 }
