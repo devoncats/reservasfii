@@ -3,6 +3,7 @@ import SchedulerReservationCard from "@/components/dashboard/scheduler/scheduler
 import { useScheduler } from "@/hooks/use-scheduler";
 import { cn } from "@/lib/utils";
 import { isToday } from "date-fns";
+import { useMemo } from "react";
 
 interface SchedulerDayColumnProps {
   date: Date;
@@ -16,6 +17,16 @@ export function SchedulerDayColumn({
   name,
 }: SchedulerDayColumnProps) {
   const { reservations } = useScheduler();
+
+  const filteredReservations = useMemo(() => {
+    return reservations.filter((reservation) => {
+      if (!reservation.start || !reservation.end) return false;
+
+      const reservationDate = new Date(reservation.start);
+
+      return reservationDate.getDate() === date.getDate() && true;
+    });
+  }, [reservations, date]);
 
   return (
     <div
@@ -37,7 +48,7 @@ export function SchedulerDayColumn({
           <SchedulerDay key={i} />
         ))}
 
-        {reservations.map((reservation) => (
+        {filteredReservations.map((reservation) => (
           <SchedulerReservationCard {...reservation} key={reservation.id} />
         ))}
       </div>
