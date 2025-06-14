@@ -1,4 +1,6 @@
 import SchedulerDay from "@/components/dashboard/scheduler/scheduler-day";
+import SchedulerReservationCard from "@/components/dashboard/scheduler/scheduler-reservation-card";
+import { useScheduler } from "@/hooks/use-scheduler";
 import { cn } from "@/lib/utils";
 import { isToday } from "date-fns";
 
@@ -13,6 +15,8 @@ export function SchedulerDayColumn({
   number,
   name,
 }: SchedulerDayColumnProps) {
+  const { reservations } = useScheduler();
+
   return (
     <div
       key={number}
@@ -33,7 +37,9 @@ export function SchedulerDayColumn({
           <SchedulerDay key={i} />
         ))}
 
-        {/* reservations */}
+        {reservations.map((reservation) => (
+          <SchedulerReservationCard {...reservation} key={reservation.id} />
+        ))}
       </div>
     </div>
   );

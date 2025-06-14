@@ -5,7 +5,7 @@ export type ReservationDto = Pick<
   "id" | "start" | "end" | "status" | "courseId"
 >;
 export type ReservationDetailsDto = Omit<
-  ReservationDto,
+  Reservation,
   "createdAt" | "updatedAt"
 >;
 export type CreateReservationDto = Omit<

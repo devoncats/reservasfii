@@ -14,7 +14,7 @@ import {
 export const SIDEBAR_DATA = {
   reservations: [
     {
-      name: "Todas las reservas",
+      name: "Horarios",
       url: "/dashboard/",
       icon: Calendar,
     },

@@ -1,4 +1,4 @@
-import { Laboratory } from "@prisma/client";
+import { Laboratory, Reservation } from "@prisma/client";
 
 declare interface BreadcrumbRoute {
   href: string;
@@ -16,11 +16,15 @@ declare interface SchedulerContextData {
   isLoading: boolean;
   error: string | null;
   laboratories: Pick<Laboratory, "id", "name">[];
+  reservations: Omit<Reservation, "createdAt" | "updatedAt">[];
 
   // Fetching Actions
   setIsLoading: (isLoading: boolean) => void;
   setError: (error: string | null) => void;
   setLaboratories: (laboratories: Pick<Laboratory, "id", "name">[]) => void;
+  setReservations: (
+    reservations: Omit<Reservation, "createdAt" | "updatedAt">[]
+  ) => void;
 
   // UI states
   selectedWeek: RequiredDateRange;

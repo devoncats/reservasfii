@@ -1,6 +1,7 @@
 "use client";
 
 import { getAccessibleLaboratoriesAction } from "@/actions/laboratory.actions";
+import { getAllReservationsAction } from "@/actions/reservation.actions";
 import { RequiredDateRange, SchedulerContextData } from "@/types";
 import { endOfWeek, startOfWeek } from "date-fns";
 import { createContext, useCallback, useEffect, useState } from "react";
@@ -17,6 +18,9 @@ export function SchedulerProvider({ children }: { children: React.ReactNode }) {
   const [laboratories, setLaboratories] = useState<
     SchedulerContextData["laboratories"]
   >([]);
+  const [reservations, setReservations] = useState<
+    SchedulerContextData["reservations"]
+  >([]);
 
   // UI states
   const [selectedWeek, setSelectedWeek] = useState<RequiredDateRange>({
@@ -27,12 +31,23 @@ export function SchedulerProvider({ children }: { children: React.ReactNode }) {
 
   // Functions
   const refreshData = useCallback(async () => {
-    const [laboratoriesResponse] = await Promise.all([
+    const [laboratoriesResponse, reservationsResponse] = await Promise.all([
       getAccessibleLaboratoriesAction(),
+      getAllReservationsAction(
+        selectedWeek.from,
+        selectedWeek.to,
+        selectedLaboratoryId
+      ),
     ]);
 
     if (!laboratoriesResponse.success) {
       setError(laboratoriesResponse.error);
+      setIsLoading(false);
+      return;
+    }
+
+    if (!reservationsResponse.success) {
+      setError(reservationsResponse.error);
       setIsLoading(false);
       return;
     }
@@ -43,12 +58,19 @@ export function SchedulerProvider({ children }: { children: React.ReactNode }) {
       return;
     }
 
+    if (!reservationsResponse || !reservationsResponse.data) {
+      setError("No reservations found");
+      setIsLoading(false);
+      return;
+    }
+
     setLaboratories(laboratoriesResponse.data || []);
+    setReservations(reservationsResponse.data || []);
 
     if (!selectedLaboratoryId && laboratoriesResponse.data.length > 0) {
       setSelectedLaboratoryId(laboratoriesResponse.data[0].id);
     }
-  }, [selectedLaboratoryId]);
+  }, [selectedLaboratoryId, selectedWeek.from, selectedWeek.to]);
 
   // Refresh data on mount
   useEffect(() => {
@@ -60,12 +82,14 @@ export function SchedulerProvider({ children }: { children: React.ReactNode }) {
     isLoading,
     error,
     laboratories,
+    reservations,
     selectedWeek,
     selectedLaboratoryId,
 
     setIsLoading,
     setError,
     setLaboratories,
+    setReservations,
     setSelectedWeek,
     setSelectedLaboratoryId,
   };
