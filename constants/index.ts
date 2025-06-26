@@ -20,7 +20,7 @@ export const SIDEBAR_DATA = {
     },
     {
       name: "Mis reservas",
-      url: "/dashboard/reservations/",
+      url: "/dashboard/reservations/user",
       icon: CalendarHeart,
     },
     {
@@ -32,7 +32,7 @@ export const SIDEBAR_DATA = {
   administrator: [
     {
       name: "Todas las reservas",
-      url: "/dashboard/reservations/all",
+      url: "/dashboard/reservations/",
       icon: CalendarSearch,
     },
     {
@@ -97,8 +97,8 @@ export const HOURS: string[] = [
 
 export const LABELS: Record<string, string> = {
   dashboard: "Dashboard",
-  reservations: "Mis reservas",
-  all: "Todas las reservas",
+  reservations: "Todas las Reservas",
+  user: "Mis Reservas",
   create: "Crear reserva",
   approve: "Aprobar reservas",
   laboratories: "Laboratorios",

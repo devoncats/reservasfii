@@ -25,6 +25,10 @@ export class ReservationService {
     );
   }
 
+  async getReservationsByUser(userId: string) {
+    return await this.reservationRepository.findByUser(userId);
+  }
+
   async getReservationById(id: string) {
     return await this.reservationRepository.findById(id);
   }

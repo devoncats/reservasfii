@@ -1,4 +1,4 @@
-import { Reservation } from "@prisma/client";
+import { Course, Reservation } from "@prisma/client";
 
 export type ReservationDto = Pick<
   Reservation,
@@ -7,7 +7,7 @@ export type ReservationDto = Pick<
 export type ReservationDetailsDto = Omit<
   Reservation,
   "createdAt" | "updatedAt"
->;
+> & { course: Pick<Course, "id" | "name"> };
 export type CreateReservationDto = Omit<
   Reservation,
   "id" | "createdAt" | "updatedAt"

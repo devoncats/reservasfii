@@ -11,6 +11,7 @@ export interface ReservationRepository {
     to: Date,
     laboratoryId: string
   ): Promise<ReservationDetailsDto[]>;
+  findByUser(userId: string): Promise<ReservationDetailsDto[]>;
   findById(id: string): Promise<Reservation | null>;
   findAll(): Promise<ReservationDetailsDto[]>;
   create(data: CreateReservationDto): Promise<Reservation>;

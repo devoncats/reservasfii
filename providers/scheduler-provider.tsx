@@ -1,7 +1,7 @@
 "use client";
 
 import { getAccessibleLaboratoriesAction } from "@/actions/laboratory.actions";
-import { getAllReservationsAction } from "@/actions/reservation.actions";
+import { getReservationsByWeekAndLaboratoryIdAction } from "@/actions/reservation.actions";
 import { RequiredDateRange, SchedulerContextData } from "@/types";
 import { endOfWeek, startOfWeek } from "date-fns";
 import { createContext, useCallback, useEffect, useState } from "react";
@@ -33,7 +33,7 @@ export function SchedulerProvider({ children }: { children: React.ReactNode }) {
   const refreshData = useCallback(async () => {
     const [laboratoriesResponse, reservationsResponse] = await Promise.all([
       getAccessibleLaboratoriesAction(),
-      getAllReservationsAction(
+      getReservationsByWeekAndLaboratoryIdAction(
         selectedWeek.from,
         selectedWeek.to,
         selectedLaboratoryId

@@ -23,10 +23,54 @@ export class PrismaReservationRepository implements ReservationRepository {
       },
       select: {
         id: true,
+        userId: true,
+        group: true,
+        status: true,
         start: true,
         end: true,
-        status: true,
+        comment: true,
+        laboratoryId: true,
+        responsibleId: true,
+        facultyId: true,
+        majorId: true,
         courseId: true,
+        course: {
+          select: {
+            id: true,
+            name: true,
+          },
+        },
+      },
+      orderBy: {
+        start: "asc",
+      },
+    });
+  }
+
+  async findByUser(userId: string): Promise<ReservationDetailsDto[]> {
+    return await prisma.reservation.findMany({
+      where: {
+        userId,
+      },
+      select: {
+        id: true,
+        userId: true,
+        group: true,
+        status: true,
+        start: true,
+        end: true,
+        comment: true,
+        laboratoryId: true,
+        responsibleId: true,
+        facultyId: true,
+        majorId: true,
+        courseId: true,
+        course: {
+          select: {
+            id: true,
+            name: true,
+          },
+        },
       },
       orderBy: {
         start: "asc",
@@ -44,10 +88,23 @@ export class PrismaReservationRepository implements ReservationRepository {
     return await prisma.reservation.findMany({
       select: {
         id: true,
+        userId: true,
+        group: true,
+        status: true,
         start: true,
         end: true,
-        status: true,
+        comment: true,
+        laboratoryId: true,
+        responsibleId: true,
+        facultyId: true,
+        majorId: true,
         courseId: true,
+        course: {
+          select: {
+            id: true,
+            name: true,
+          },
+        },
       },
       orderBy: {
         start: "asc",
